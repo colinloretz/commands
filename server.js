@@ -89,9 +89,11 @@ async function handleRequest(req, res) {
       const focused = body.data.options.find(o => o.focused);
       const query = focused ? focused.value : '';
       const products = await getSupportProducts(query);
+      const choices = products.slice(0, 25);
+      console.log(`[${new Date().toISOString()}] AUTOCOMPLETE /${commandName} query="${query}" returning: ${choices.map(c => c.name).join(', ')}`);
       jsonResponse(res, 200, {
         type: 8,
-        data: { choices: products.slice(0, 25) },
+        data: { choices },
       });
       return;
     }
