@@ -13,8 +13,8 @@
   4. Copy the cloudflared URL into Discord Developer Portal > General Information > Interactions Endpoint URL and save (Discord will PING to
   validate)
 
-  `/support` — shows a dynamic autocomplete dropdown (Product A/B/C) filtered as you type
-  `/support-test` — shows a static dropdown (Product X/Y) built into Discord's UI
+  - `/support` — shows a dynamic autocomplete dropdown (Product A/B/C) filtered as you type
+  - `/support-test` — shows a static dropdown (Product X/Y) built into Discord's UI
 
   5. Update the json values in server.js to see the dropdown options change in real-time without needing to re-register commands or update the Discord app settings.
 
