@@ -1,7 +1,7 @@
  To get it running:
 
   1. Fill in .env with your Discord app credentials from the Developer Portal
-  2. Optionally add `DISCORD_GUILD_ID` for instant command registration (global commands take up to 1hr)
+  2. Optionally add `DISCORD_GUILD_ID` to register as a guild command instead of global command
   3. Run the steps:
 
 ```
