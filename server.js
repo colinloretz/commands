@@ -15,15 +15,33 @@ for (const line of envContent.split('\n')) {
 const PORT = process.env.PORT || 3000;
 const PUBLIC_KEY = process.env.DISCORD_PUBLIC_KEY;
 
-// Simulated async product lookup for /support autocomplete
+// Full product catalog
+const ALL_PRODUCTS = [
+  { name: 'Product A', value: 'product_a' },
+  { name: 'Product B', value: 'product_b' },
+  { name: 'Product C', value: 'product_c' },
+  { name: 'Product D', value: 'product_d' },
+  { name: 'Product E', value: 'product_e' },
+  { name: 'Product F', value: 'product_f' },
+  { name: 'Product G', value: 'product_g' },
+  { name: 'Product H', value: 'product_h' },
+  { name: 'Product I', value: 'product_i' },
+  { name: 'Product J', value: 'product_j' },
+  { name: 'Product K', value: 'product_k' },
+  { name: 'Product L', value: 'product_l' },
+];
+
+function pickRandom(arr, count) {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
+// Returns a random subset of 4-5 products each time, filtered by query
 async function getSupportProducts(query) {
-  const products = [
-    { name: 'Product A', value: 'product_a' },
-    { name: 'Product B', value: 'product_b' },
-    { name: 'Product F', value: 'product_f' },
-  ];
-  if (!query) return products;
-  return products.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
+  const count = 4 + Math.floor(Math.random() * 2); // 4 or 5
+  const subset = pickRandom(ALL_PRODUCTS, count);
+  if (!query) return subset;
+  return subset.filter(p => p.name.toLowerCase().includes(query.toLowerCase()));
 }
 
 function jsonResponse(res, statusCode, data) {
